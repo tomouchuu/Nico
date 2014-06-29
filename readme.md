@@ -9,6 +9,7 @@ Similar to how NicoSound / NicoMimi used to work but focusing more on ease of us
 1. Grab [NodeJS](http://nodejs.org/) & [FFmpeg](http://www.ffmpeg.org/).
 2. Next clone this repo to a folder somewhere on your machine.
 3. Run `npm install && bower install` to get the dependencies.
+4. I made changes to the `nicovideo` npm package see: <https://gist.github.com/Tomo-san/0128d883f404d001568a> for changes. You can just overwrite the one that was downloaded with this one.
 4. Edit `/lib/controllers/api.js` to contain your NND Email & Password.
 5. Lastly you should be able to run `grunt serve` to set up a webserver with livereload and such to work in. `grunt` will build the site and stick it in `/dist`
 

@@ -8,11 +8,32 @@
               small MP3 Ripper
       .row
         .col-xs-12
-          form(role="form", ng-submit="submit()")
+          form(role="form", ng-submit="search()")
             .input-group
               input(type="text", ng-model="code").form-control
               span.input-group-btn
                 button(type="submit").btn.btn-default Go!
+.row.info(ng-show="info")
+  .col-sm-8.col-sm-offset-2
+    .well
       .row
         .col-xs-12
-          a(ng-href="/{{ download.path }}", ng-show="download", download="/{{ download.path }}", tooltip="Right Click, Save As...", tooltip-placement="bottom") {{ download.meta.title }}
+          h3.text-center {{ info.title }}
+            small {{ info.length }}
+          h3.small.text-right {{ info.first_retrieve }}
+          img(ng-src="{{ info.thumbnail_url }}", alt="{{ info.title }}").pull-left
+          p {{ info.description }}
+      .row(ng-hide="files")
+        .col-xs-12
+          p.text-center
+            a(ng-click="download(info.video_id)", title="Download Video / MP3") Download Video / MP3
+        .col-xs-12(ng-show="loading")
+          p.text-center
+            small This may take a little while...
+      .row(ng-show="files")
+        .col-xs-6
+          p.text-center
+            a(ng-href="/{{ download.path }}", download="/{{ download.path }}", tooltip="Right Click, Save As...", tooltip-placement="bottom") Video Download
+        .col-xs-6
+          p.text-center
+            a(ng-href="/{{ download.path }}", download="/{{ download.path }}", tooltip="Right Click, Save As...", tooltip-placement="bottom") MP3 Download
