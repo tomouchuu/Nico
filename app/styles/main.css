@@ -19,3 +19,6 @@ body {
 
 .info img { margin: 0 15px 15px 0; }
 .info a { cursor: pointer; }
+
+.searching { margin-top: 15px; }
+.searching p.text-center { margin: 0; }
