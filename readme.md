@@ -17,7 +17,9 @@ Similar to how NicoSound / NicoMimi used to work but focusing more on ease of us
 
 - Ability to download the video too, it does it anyway just making the `/videos` path available (DONE!)
 - Info on the video when entering the sm code. Maybe as a while you wait thing, or just before you click download or something. (DONE!)
-- Fix issue with names being all messed up when downloading.
+- If it already has the files it won't download them again. (DONE!)
+- Fix issue with names being all messed up when downloading. (MAYBE DONE!)
 - Progress bars for downloading / conversions etc.
 - Queuing System, if this goes live then I'll probably need to get another NND account and set it up with premium but it can only do so many at a time I belive so a queuing system will have to be implemented to stop stuff failing everywhere.
+- Other option is to maybe prompt for the users details when first viewing the site and use them in a session, option to use mine or the queue NND if prefered. Would need HTTPS definitely, wonder if I can show I can't see information.
 - Improve ease of use / design
