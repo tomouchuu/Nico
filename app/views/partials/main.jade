@@ -33,17 +33,21 @@
           p.text-center
             a(ng-href="{{ info.watch_url }}", title="Watch on NND", target="_blank") Watch on NND
         .col-xs-6
-          .row(ng-hide="file")
+          .row(ng-hide="file.audiopath || file.videopath")
             .col-xs-12
               p.text-center
                 a(ng-click="download(info.video_id)", title="Generate Video / MP3 links") Generate Video / MP3 links
-          .row(ng-show="file")
+          .row(ng-show="file.audiopath || file.videopath")
             .col-xs-6
-              p.text-center
-                a(target="_blank", ng-href="/download/videos/{{ file.meta.title }}.{{ file.meta.movie_type }}") Video Download
+              p.text-center(ng-show="file.videopath")
+                a(target="_blank", ng-href="/download/video/{{ info.video_id }}?title={{ info.title }}&format={{ info.movie_type }}") Video Download
+              p.text-center(ng-hide="file.videopath")
+                a(ng-click="download(info.video_id)", title="Generate Video link") Generate Video link
             .col-xs-6
-              p.text-center
-                a(target="_blank", ng-href="/download/audios/{{ file.meta.title }}.mp3") MP3 Download
+              p.text-center(ng-show="file.audiopath")
+                a(target="_blank", ng-href="/download/audio/{{ info.video_id }}?title={{ info.title }}") MP3 Download
+              p.text-center(ng-hide="file.audiopath")
+                a(ng-click="convert(info.video_id, info.movie_type)", title="Generate Audio link") Generate Audio link
       .row(ng-hide="file")
         .col-xs-12(ng-show="loading")
           p.text-center
