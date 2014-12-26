@@ -5,7 +5,7 @@
         .col-xs-12
           .page-header
             h1.text-center Nico&nbsp;
-              small MP3 Ripper
+              small Video/MP3 Ripper
       .row
         .col-xs-12
           form(role="form", ng-submit="search()")
@@ -13,6 +13,10 @@
               input(type="text", ng-model="code").form-control
               span.input-group-btn
                 button(type="submit").btn.btn-default Go!
+      .row(ng-show="searching")
+        .col-xs-12
+          p.text-center
+            small Searching...
 .row.info(ng-show="info")
   .col-sm-8.col-sm-offset-2
     .well
@@ -21,19 +25,26 @@
           h3.text-center {{ info.title }}
             small {{ info.length }}
           h3.small.text-right {{ info.first_retrieve }}
-          img(ng-src="{{ info.thumbnail_url }}", alt="{{ info.title }}").pull-left
-          p {{ info.description }}
-      .row(ng-hide="files")
-        .col-xs-12
+          a(ng-href="{{ info.watch_url }}", title="Watch on NND", target="_blank")
+            img(ng-src="{{ info.thumbnail_url }}", alt="{{ info.title }}").pull-left
+          p(ng-bind-html="info.description")
+      .row
+        .col-xs-6
           p.text-center
-            a(ng-click="download(info.video_id)", title="Download Video / MP3") Download Video / MP3
+            a(ng-href="{{ info.watch_url }}", title="Watch on NND", target="_blank") Watch on NND
+        .col-xs-6
+          .row(ng-hide="file")
+            .col-xs-12
+              p.text-center
+                a(ng-click="download(info.video_id)", title="Generate Video / MP3 links") Generate Video / MP3 links
+          .row(ng-show="file")
+            .col-xs-6
+              p.text-center
+                a(target="_blank", ng-href="/download/videos/{{ file.meta.title }}.{{ file.meta.movie_type }}") Video Download
+            .col-xs-6
+              p.text-center
+                a(target="_blank", ng-href="/download/audios/{{ file.meta.title }}.mp3") MP3 Download
+      .row(ng-hide="file")
         .col-xs-12(ng-show="loading")
           p.text-center
             small This may take a little while...
-      .row(ng-show="files")
-        .col-xs-6
-          p.text-center
-            a(ng-href="/{{ download.path }}", download="/{{ download.path }}", tooltip="Right Click, Save As...", tooltip-placement="bottom") Video Download
-        .col-xs-6
-          p.text-center
-            a(ng-href="/{{ download.path }}", download="/{{ download.path }}", tooltip="Right Click, Save As...", tooltip-placement="bottom") MP3 Download
