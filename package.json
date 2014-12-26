@@ -13,8 +13,8 @@
     "compression": "~1.0.1",
     "lodash": "~2.4.1",
     "jade": "~1.2.0",
-    "fluent-ffmpeg": "^1.7.2",
-    "niconico": "0.0.7"
+    "fluent-ffmpeg": "~2",
+    "niconico": "0.0.8"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
