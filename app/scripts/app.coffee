@@ -3,7 +3,8 @@
 angular.module('nicoApp', [
   'ui.bootstrap',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'angularMoment'
 ])
   .config ($routeProvider, $locationProvider) ->
     $routeProvider

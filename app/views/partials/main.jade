@@ -24,7 +24,7 @@
         .col-xs-12
           h3.text-center {{ info.title }}
             small {{ info.length }}
-          h3.small.text-right {{ info.first_retrieve }}
+          h3.small.text-right {{ info.first_retrieve | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a' }}
           a(ng-href="{{ info.watch_url }}", title="Watch on NND", target="_blank")
             img(ng-src="{{ info.thumbnail_url }}", alt="{{ info.title }}").pull-left
           p(ng-bind-html="info.description")
